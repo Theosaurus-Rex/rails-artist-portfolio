@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+<div class="art-card">
+  <div class="artwork-info">
+    <p>
+      <strong>Title:</strong>
+      <%= @artwork.title %>
+    </p>
+
+    <p>
+      <strong>Year:</strong>
+      <%= @artwork.year %>
+    </p>
+
+    <p>
+      <strong>Medium:</strong>
+      <%= @artwork.medium %>
+    </p>
+
+    <p>
+      <strong>Size:</strong>
+      <%= @artwork.size %>
+    </p>
+
+    <p>
+      <strong>Price:</strong>
+      <%= @artwork.price %>
+    </p>
+  <div>
+
+  <div class="show-image">
+    <%= image_tag @artwork.picture %>
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_artwork_path(@artwork) %> |
+<%= link_to 'Back', artworks_path %>
