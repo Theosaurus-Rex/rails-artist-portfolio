@@ -1,4 +1,5 @@
 class ArtworksController < ApplicationController
+  before_action :detect_admin, :only => [:new, :edit, :create, :destroy]
   before_action :set_artwork, only: %i[ show edit update destroy ]
 
   # GET /artworks or /artworks.json
@@ -65,5 +66,19 @@ class ArtworksController < ApplicationController
     # Only allow a list of trusted parameters through.
     def artwork_params
       params.require(:artwork).permit(:title, :year, :medium, :size, :price, :picture)
+    end
+
+
+    #Give admin permissions if User is an admin
+    def detect_admin
+      authenticate_user!
+    
+      if current_user.admin
+         return
+      else
+         redirect_to home_path
+         flash[:alert] = "You must be an admin to do that."
+
+      end
     end
 end
