@@ -2,16 +2,15 @@
 
 <h1>Gallery</h1>
 
+<div class="gallery">
     <% @artworks.each do |artwork| %>
       <div class="index-card">
-        <div class="show-image">
+        <div class="index-image">
             <%= image_tag artwork.picture %>
           </div>
-        <p><%= artwork.title %></p>
-        <p><%= artwork.year %></p>
-        <p><%= artwork.medium %></p>
-        <p><%= artwork.size %></p>
-        <p><%= artwork.price %></p>
+        <p class="artwork-title"><%= artwork.title %></p>
+        <p><%=  artwork.year %></p>
+        <%= link_to  'Details', artwork_path(artwork.id)  %>
       <% if current_user.admin %>
       <ul>
         <li><%= link_to 'Show', artwork %></li>
@@ -22,7 +21,7 @@
     </div>
       
     <% end %>
-  
+</div>
 
 <br>
 
